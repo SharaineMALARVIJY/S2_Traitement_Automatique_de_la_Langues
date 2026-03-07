@@ -2,7 +2,8 @@ import codecs
 import re
 import os.path
 
-# Chargement des données:
+
+# Chargement des données (Chirac/Mitterrand):
 def load_pres(fname):
     alltxts = []
     alllabs = []
@@ -11,7 +12,7 @@ def load_pres(fname):
         txt = s.readline()
         if (len(txt)) < 5:
             break
-        #
+
         lab = re.sub(r"<[0-9]*:[0-9]*:(.)>.*", "\\1", txt)
         txt = re.sub(r"<[0-9]*:[0-9]*:.>(.*)", "\\1", txt)
         if lab.count("M") > 0:
@@ -20,6 +21,20 @@ def load_pres(fname):
             alllabs.append(1)
         alltxts.append(txt)
     return alltxts, alllabs
+
+
+def load_pres_test(fname):
+    alltxts = []
+    s = codecs.open(fname, "r", "utf-8")  # pour régler le codage
+    while True:
+        txt = s.readline()
+        if (len(txt)) < 5:
+            break
+
+        txt = re.sub(r"<[0-9]*:[0-9]*>(.*)", "\\1", txt)
+        alltxts.append(txt)
+    return alltxts
+
 
 # Données classification de sentiments (films)
 def load_movies(path2data):  # 1 classe par répertoire
@@ -34,3 +49,6 @@ def load_movies(path2data):  # 1 classe par répertoire
         cpt += 1  # chg répertoire = cht classe
 
     return alltxts, labs
+
+
+## TODO : load_movies_test
