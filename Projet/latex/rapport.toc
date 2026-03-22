@@ -1,0 +1,13 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Analyse des données}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Classification de sentiments}{2}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Description du jeu de données}{2}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Analyse du jeu de données}{2}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Classification des discours de Présidents}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Description du jeu de données}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Analyse du jeu de données}{3}{subsubsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.3}Prétraitement des données}{4}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Description}{4}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Objectifs du prétraitement}{4}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Nettoyage du texte}{4}{subsubsection.2.3.3}%
