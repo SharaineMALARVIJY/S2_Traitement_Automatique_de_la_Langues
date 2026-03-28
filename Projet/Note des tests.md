@@ -52,7 +52,7 @@ Etonnament, le deux classificateurs SVM linéaire ne donnent pas les mêmes rés
 
 J'ai refait les tests avec une stratified k-fold cross validation pour avoir des résultats plus fiables, et les résultats sont plus cohérents que ceux obtenus avec un simple train/test split.
 
-Résultats avec 5 folds :
+Résultats sur 5-Fold Cross-Validation :  
 
 | tf-idf + | SVM linéaire | SVM (kernel = linear) |
 | :------- |:-------:| :------:|
@@ -60,6 +60,34 @@ Résultats avec 5 folds :
 | F1-score | 85.731% (+/- 1.546%) | 85.403% (+/- 0.873%) |
 | ROC AUC  | 93.182% (+/- 0.612%) | 92.926% (+/- 0.672%) |
 | Temps d'execution | 5s | 15s |
+
+Je rajoute le paramètre sublinear_tf=True
+```python
+X = TfidfVectorizer(sublinear_tf=True)
+```
+
+| tf-idf + | SVM linéaire | 
+| :------- |:-------:| 
+| Accuracy | 87.850% (+/- 0.831%) |
+| F1-score | 87.861% (+/- 1.015%) |
+| ROC AUC  | 94.613% (+/- 0.633%) |
+| Temps d'execution | 2s |
+
+
+puis je teste avec grid_search pour trouver les meilleurs paramètres pour la tf-idf en fessant varier les min_df, max_df, et les n-grams.
+
+On obtient les meilleurs résultats avec les paramètres suivants :
+```python
+X = TfidfVectorizer(max_df=1.0, min_df=3, ngram_range=(1, 2), sublinear_tf=True)
+```
+
+| tf-idf + | SVM linéaire | 
+| :------- |:-------:| 
+| Accuracy | 88.400% (+/- 0.889%) |
+| F1-score | 88.388% (+/- 1.013%) |
+| Précision | 88.333% (+/- 1.107%) |
+| Rappel | 88.492% (+/- 2.246%) |
+
 
 ## Chirac/Mitterrand
 
@@ -86,3 +114,28 @@ Résultats avec 10 folds :
 | Temps d'execution | 6s | 6s | 13m 22s | 23m 22s | 44m 48s |
 
 La fonction LinearSVC est bien plus optimisée sur les grands datasets que la fonction SVC. 
+
+On a de bons résultats avec la SVM linéaire car elle généralise mieux étant donné qu'on est un situation de sur-apprentissage.
+
+J'update avec les metriques utilisées pour l'evaluation du modeles:
+
+Résultats sur 10-Fold Cross-Validation :
+| tf-idf + | SVM linéaire | 
+| :------- |:-------:|
+| F1-score | 94.619% (+/- 0.131%) |
+| ROC AUC  | 87.707% (+/- 0.652%) |
+| Avg Precision | 97.572% (+/- 0.204%) |
+
+
+Utilisation de GridSearchCV pour trouver les meilleurs paramètres pour la TF-IDF :
+  tfidf__min_df: 1
+  tfidf__ngram_range: (1, 2)
+  tfidf__smooth_idf: False
+  tfidf__sublinear_tf: True
+  clf__C : 0.95
+
+| tf-idf + | SVM linéaire | 
+| :------- |:-------:|
+| F1-score | 95.276% (+/- 0.169%) |
+| ROC AUC  | 90.187% (+/- 0.730%) |
+| Avg Precision | 98.086% (+/- 0.189%) |
