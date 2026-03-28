@@ -51,4 +51,7 @@ def load_movies(path2data):  # 1 classe par répertoire
     return alltxts, labs
 
 
-## TODO : load_movies_test
+def load_movies_test(path2data):
+    with open(path2data, "r") as f:
+        lignes = [ligne.strip() for ligne in f]
+    return lignes

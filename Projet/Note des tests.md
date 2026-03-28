@@ -78,15 +78,15 @@ puis je teste avec grid_search pour trouver les meilleurs paramètres pour la tf
 
 On obtient les meilleurs résultats avec les paramètres suivants :
 ```python
-X = TfidfVectorizer(max_df=1.0, min_df=3, ngram_range=(1, 2), sublinear_tf=True)
+X = TfidfVectorizer(max_df=1.0, min_df=0.005, ngram_range=(1, 2), sublinear_tf=True)
 ```
 
 | tf-idf + | SVM linéaire | 
 | :------- |:-------:| 
-| Accuracy | 88.400% (+/- 0.889%) |
-| F1-score | 88.388% (+/- 1.013%) |
-| Précision | 88.333% (+/- 1.107%) |
-| Rappel | 88.492% (+/- 2.246%) |
+| Accuracy | 88.750% (+/- 1.107%) |
+| F1-score | 88.673% (+/- 1.150%) |
+| Précision | 89.156% (+/- 0.816%) |
+| Rappel | 88.214% (+/- 1.933%) |
 
 
 ## Chirac/Mitterrand
@@ -127,12 +127,12 @@ Résultats sur 10-Fold Cross-Validation :
 | Avg Precision | 97.572% (+/- 0.204%) |
 
 
-Utilisation de GridSearchCV pour trouver les meilleurs paramètres pour la TF-IDF :
-  tfidf__min_df: 1
-  tfidf__ngram_range: (1, 2)
-  tfidf__smooth_idf: False
-  tfidf__sublinear_tf: True
-  clf__C : 0.95
+Utilisation de GridSearchCV pour trouver les meilleurs paramètres pour la TF-IDF :  
+  tfidf__min_df: 1  
+  tfidf__ngram_range: (1, 2)  
+  tfidf__smooth_idf: False  
+  tfidf__sublinear_tf: True  
+  clf__C : 0.95  
 
 | tf-idf + | SVM linéaire | 
 | :------- |:-------:|
