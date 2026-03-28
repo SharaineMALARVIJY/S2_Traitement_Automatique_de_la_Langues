@@ -4,8 +4,8 @@
 \contentsline {subsection}{\numberline {2.1}Classification de sentiments}{2}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}Description du jeu de données}{2}{subsubsection.2.1.1}%
 \contentsline {subsubsection}{\numberline {2.1.2}Analyse du jeu de données}{2}{subsubsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.2}Classification des discours de Présidents}{3}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Description du jeu de données}{3}{subsubsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2}Classification des discours de Présidents}{2}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Description du jeu de données}{2}{subsubsection.2.2.1}%
 \contentsline {subsubsection}{\numberline {2.2.2}Analyse du jeu de données}{3}{subsubsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.3}Prétraitement des données}{4}{subsection.2.3}%
 \contentsline {subsubsection}{\numberline {2.3.1}Description}{4}{subsubsection.2.3.1}%

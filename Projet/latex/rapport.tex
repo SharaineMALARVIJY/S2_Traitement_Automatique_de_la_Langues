@@ -55,7 +55,7 @@ Voici un exemple de la fréquence des mots dans le dataset :
         \caption{Mots les plus fréquents (0)}
         \end{table}
 
-Comme attendu, avant toute forme de pré traitement, les mots les plus fréquents sont les stops words.\\
+Comme attendu, avant toute forme de pré traitement, les mots les plus fréquents sont les stops words. Ils n'apportent pas d'information discriminante plus tard dans la partie prétraitement. ils seront supprimés.\\
 Une meilleure façon de visualiser la fréquence des mots est d'utiliser un word cloud. Ainsi que la distribution de Zipf.
 
 
@@ -138,7 +138,61 @@ Nous avons aussi essayé de garder uniquement les premières lignes de chaque cr
 
 \subsubsection{Nettoyage du texte}
 
-Voici une phrase en gras : \textbf{important}.
+La premières chose qui à été fait pour le nettoyage du texte a été de supprimer les majuscules. Ensuite, nous avons supprimé les caractères spéciaux et les chiffres. Nous avons aussi supprimé les stop words car ils n'apportent pas d'informations pertinentes pour la classification.\\
+Pour le jeu de données des avis de films nous avons supprimé les mots les plus fréquents car ils sont très peu discriminants. Il à fallu aussi ajouté une liste de mots plus rares mais non discriminants.
+
+Les plus fréquents n'apportent pas d'informations discriminantes c'est à dire qu'ils sont présents dans les critiques de films positives et négatives.
+
+Pour le jeu de données des discours de présidents nous avons supprimé les stop words francais, nous avons aussi retiré les mots "français", "pays" et "qu" car ils sont très peu discriminants. Ce data set est beaucoup plus complexe à traiter que le précédent. vu qu'il est déséquilibré les Chirac est sur représenté sur les graphes\\
+
+Il est intéressant de comparer les graphes de la répartition des mots positifs et négatifs avant et après le prétraitement des données.\\
+
+
+        \begin{figure}[h!]
+            \centering
+            \begin{minipage}{0.5\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{image/analyse_data/top_words_by_sentiment_base.png}
+                \caption*{\small fréquence des mots et caractère discriminant des mots dans les critiques de films avant prétraitement}
+            \end{minipage}\hfill
+            \begin{minipage}{0.5\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{image/analyse_data/top_words_by_sentiment_proced.png}
+                \caption*{\small fréquence des mots et caractère discriminant des mots dans les discours de présidents avant prétraitement}
+            \end{minipage}\hfill
+            \label{fig:images-tests}
+        \end{figure}
+
+
+Comme on peut les voir sur les graphes après le prétraitement des données, les mots les plus fréquents on évidement changé mais sur tout nous pouvons remarquer que les mots sont bien plus discriminants qu'avant le prétraitement des données. Nous avons beaucoup plus de mots qui sont présents dans les critiques de films positives que dans les critiques de films négatives et inversement.\\
+
+Il est aussi intéressant de regarder la courbe de Zipf après le prétraitement des données. Nous pouvons voir que la courbe de Zipf est beaucoup plus lisse après le prétraitement des données.\\
+
+        \begin{figure}[h!]
+            \centering
+            \begin{minipage}{0.4\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{image/analyse_data/plot_zipf_movie_pre.png}
+                \caption*{\small Distribution de Zipf des critiques de films après prétraitement}
+            \end{minipage}\hfill
+            \begin{minipage}{0.4\textwidth}
+                \centering
+                \includegraphics[width=\linewidth]{image/analyse_data/plot_zipf_pres_pre.png}
+                \caption*{\small Distribution de Zipf des discours de présidents après prétraitement}
+            \end{minipage}\hfill
+            \label{fig:images-tests}
+        \end{figure}
+
+Sur les Figures 2 et 4 les courbes de zipf montrent que les corpus sont dominés par un petit nombre de mots très fréquents, tandis que la grande majorité des mots sont rares. Cependant, après le prétraitement des données, les courbes de Zipf deviennent plus lisses, ce qui indique que les mots les plus fréquents ont été supprimés et que les mots restants sont plus équilibrés en termes de fréquence.\\
+
+Ce prétraitement des données est le premier que nous avons implémenté. Il ne donnait pas de résultats satisfaisants donc nous nous sommes dirigés vers la TF-IDF pour faire du prétraitement des données.\\
+
+La TF-IDF (Term Frequency – Inverse Document Frequency) consiste à attribuer un poids à chaque mot en fonction de son importance dans un document et dans l’ensemble du corpus. La composante TF (Term Frequency) mesure la fréquence d’un mot dans un document, tandis que la composante IDF (Inverse Document Frequency) pénalise les mots apparaissant fréquemment dans de nombreux documents. Ainsi, un mot fréquent dans un document mais rare dans le corpus aura un poids élevé, ce qui le rend plus discriminant pour la classification.\
+Nous avons utilisé la TF-IDF de la librairie Scikit-learn pour faire du prétraitement des données, nous avons vraiment exploré beaucoup de configurations et nous nous sommes arrêtés sur celle qui donnait les meilleurs résultats : \\
+
+
+
+% Voici une phrase en gras : \textbf{important}.
 
 % Et en italique : \textit{remarque}.
 
