@@ -187,28 +187,87 @@ Sur les Figures 2 et 4 les courbes de zipf montrent que les corpus sont dominés
 
 Ce prétraitement des données est le premier que nous avons implémenté. Il ne donnait pas de résultats satisfaisants donc nous nous sommes dirigés vers la TF-IDF pour faire du prétraitement des données.\\
 
-La TF-IDF (Term Frequency – Inverse Document Frequency) consiste à attribuer un poids à chaque mot en fonction de son importance dans un document et dans l’ensemble du corpus. La composante TF (Term Frequency) mesure la fréquence d’un mot dans un document, tandis que la composante IDF (Inverse Document Frequency) pénalise les mots apparaissant fréquemment dans de nombreux documents. Ainsi, un mot fréquent dans un document mais rare dans le corpus aura un poids élevé, ce qui le rend plus discriminant pour la classification.\
-Nous avons utilisé la TF-IDF de la librairie Scikit-learn pour faire du prétraitement des données, nous avons vraiment exploré beaucoup de configurations et nous nous sommes arrêtés sur celle qui donnait les meilleurs résultats : \\
+La TF-IDF (Term Frequency – Inverse Document Frequency) consiste à attribuer un poids à chaque mot en fonction de son importance dans un document et dans l’ensemble du corpus. La composante TF (Term Frequency) mesure la fréquence d’un mot dans un document, tandis que la composante IDF (Inverse Document Frequency) pénalise les mots apparaissant fréquemment dans de nombreux documents. Ainsi, un mot fréquent dans un document mais rare dans le corpus aura un poids élevé, ce qui le rend plus discriminant pour la classification.\\
+
+Nous avons utilisé la TF-IDF de la librairie Scikit-learn, beaucoup de configurations on été testées et nous nous sommes arrêtés sur celle qui donnait les meilleurs résultats. 
+
+Pour le jeu de données des films, nous avons utilisé les paramètres \texttt{max\_df = 1}, \texttt{min\_df = 3} et \texttt{sublinear\_tf = True}. Le paramètre \texttt{min\_df = 3} permet de supprimer les mots apparaissant dans moins de trois documents, ce qui réduit le bruit lié aux mots très rares ou aux erreurs typographiques. Le paramètre \texttt{max\_df = 1} signifie que nous ne filtrons pas explicitement les mots très fréquents, car la pondération TF-IDF se charge déjà de diminuer leur importance.\\
+
+L'option \texttt{sublinear\_tf = True} applique une transformation logarithmique sur la fréquence des mots, donnée par \(1 + \log(\text{tf})\), ce qui permet de limiter l'influence des mots très fréquents dans un document et d'obtenir une représentation plus équilibrée.\\
+
+Enfin, nous avons choisi de désactiver le prétraitement manuel (mise en minuscules, suppression des accents, etc.), car l'implémentation de Scikit-learn intègre déjà certaines étapes de normalisation, notamment la conversion en minuscules, et les résultats expérimentaux ont montré que ce prétraitement supplémentaire n'apportait pas d'amélioration significative des performances.\\
+
+Nous pouvons visualiser les mots les plus discriminants pour les critiques de films positives et négatives après le prétraitement des données.\\
 
 
 
-% Voici une phrase en gras : \textbf{important}.
 
-% Et en italique : \textit{remarque}.
 
-% \section{Maths}
+Pour les discours de présidents et le transformer nous avons appliqué des peu de prétraitement des données, mais nous avons mis des poids plus élevés pour les dicours de François Mitterrand pour compenser le déséquilibre des classes.
 
-% Une équation simple :
 
-% [
-% a^2 + b^2 = c^2
-% ]
+\section{Classification}
 
-% \section{Liste}
+Dans cette section, nous présentons les différentes méthodes de classification testées sur nos jeux de données. Nous comparons leurs performances afin d’identifier les approches les plus efficaces pour chaque tâche.
 
-% \begin{itemize}
-% \item Chirac
-% \item Mitterrand
-% \end{itemize}
+
+
+
+\subsection{Méthodologie}
+
+Nous utilisons une représentation TF-IDF avec des n-grammes (1,2). Les modèles sont évalués à l’aide d’une validation croisée (K-Fold) afin d’obtenir des résultats robustes.
+
+Pour le jeu de données des films, nous utilisons une validation croisée à 5 plis, tandis que pour les discours politiques nous utilisons une validation croisée à 10 plis.
+
+Les métriques utilisées sont :
+\begin{itemize}
+\item Accuracy
+\item F1-score
+\item Précision
+\item Rappel
+\item ROC-AUC (pour les discours)
+\end{itemize}
+
+\subsection{Modèles testés}
+
+Nous avons expérimenté plusieurs modèles de classification :
+
+\begin{itemize}
+\item SVM linéaire (\texttt{LinearSVC})
+\item Régression logistique
+\item Naive Bayes multinomial
+\item Transformers (BERT)
+\end{itemize}
+
+\subsection{Résultats}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Modèle & Accuracy & F1-score & Précision & Rappel \\
+\midrule
+SVM & 0.89 & 0.88 & 0.87 & 0.89 \\
+Logistic Regression & ... & ... & ... & ... \\
+Naive Bayes & ... & ... & ... & ... \\
+Transformers (BERT) & ... & ... & ... & ... \\
+\bottomrule
+\end{tabular}
+\caption{Résultats sur les critiques de films}
+\end{table}
+
+\subsection{Analyse}
+
+Le modèle SVM linéaire obtient les meilleures performances sur les deux jeux de données. Cela s’explique par sa capacité à gérer des données de grande dimension, comme les représentations TF-IDF.
+
+Le Naive Bayes, bien que rapide, présente des performances inférieures, notamment en raison de son hypothèse d’indépendance entre les mots.
+
+On remarque également que les performances sont plus faibles sur le jeu de données des discours politiques. Cela s’explique par le déséquilibre des classes et la complexité du langage utilisé.
+
+Avec le transformers (BERT), 
+
+
+\section{Conclusion}
+En conclusion, ce projet nous a permis d’explorer différentes techniques de prétraitement et de classification pour des tâches de NLP. Nous avons vu l’importance du prétraitement des données, notamment l’utilisation de la TF-IDF, pour améliorer les performances des modèles.
 
 \end{document}
