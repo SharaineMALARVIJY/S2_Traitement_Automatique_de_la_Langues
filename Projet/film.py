@@ -26,12 +26,17 @@ X = vectorizer.fit_transform(alltxts)
 alltxts_test = preprocess(texts=alltxts_test)
 X_test = vectorizer.transform(alltxts_test)
 
-clf = LinearSVC(random_state=RANDOM_STATE).fit(X, y)
+# Soumision 1
+clf = LinearSVC().fit(X, y)
+
+# Soumision 3
+# clf = LogisticRegression().fit(X, y)
+
 
 pred = clf.predict(X_test)
 arr = np.where(pred == 1, 'P', 'N')
 
-# Sauvegarder le résultat dans un fichier
-import glob
-m = len(glob.glob('csv/submission-movie-*.csv')) + 1
-np.savetxt(f"csv/submission-movie-{m}.csv", arr, fmt="%s")
+# # Sauvegarder le résultat dans un fichier
+# import glob
+# m = len(glob.glob('csv/submission-movie-*.csv')) + 1
+# np.savetxt(f"csv/submission-movie-{m}.csv", arr, fmt="%s")
