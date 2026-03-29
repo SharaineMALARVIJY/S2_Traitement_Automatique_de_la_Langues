@@ -15,8 +15,8 @@
 \contentsline {subsection}{\numberline {3.1}Méthodologie}{6}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Modèles testés}{6}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Transformers}{6}{subsubsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.3}Résultats}{7}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Analyse}{7}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Résultats}{7}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Analyse}{7}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.3}Résultats et analyse}{7}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Résultats sur les 3 classificateurs (SVM linéaire, MultinomialNB et LogisticRegression)}{7}{subsubsection.3.3.1}%
+\contentsline {paragraph}{Commentaires de films}{7}{table.3}%
+\contentsline {paragraph}{Chirac / Mitterrand}{7}{table.4}%
 \contentsline {section}{\numberline {4}Conclusion}{8}{section.4}%

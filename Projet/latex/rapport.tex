@@ -195,11 +195,11 @@ La TF-IDF (Term Frequency – Inverse Document Frequency) consiste à attribuer 
 
 Nous avons utilisé la TF-IDF de la librairie Scikit-learn, beaucoup de configurations ont été testées et nous nous sommes arrêtés sur celle qui donnait les meilleurs résultats. 
 
-Pour le jeu de données des films, nous avons utilisé les paramètres \texttt{max\_df = 1}, \texttt{min\_df = 3} et \texttt{sublinear\_tf = True}. Le paramètre \texttt{min\_df = 3} permet de supprimer les mots apparaissant dans moins de trois documents, ce qui réduit le bruit lié aux mots très rares ou aux erreurs typographiques. Le paramètre \texttt{max\_df = 1} signifie que nous ne filtrons pas explicitement les mots très fréquents, car la pondération TF-IDF se charge déjà de diminuer leur importance.\\
+Pour le jeu de données des films, nous avons utilisé les paramètres \texttt{max\_df = 0.95}, \texttt{min\_df = 0.005} et \texttt{sublinear\_tf = True}. Le paramètre \texttt{min\_df = 0.005} permet de supprimer les mots apparaissant uniquement dans 0.5\% des documents, ce qui réduit le bruit lié aux mots très rares ou aux erreurs typographiques. Le paramètre \texttt{max\_df = 0.95} signifie que nous filtrons explicitement les mots très fréquents.\\
 
 L'option \texttt{sublinear\_tf = True} applique une transformation logarithmique sur la fréquence des mots, donnée par \(1 + \log(\text{tf})\), ce qui permet de limiter l'influence des mots très fréquents dans un document et d'obtenir une représentation plus équilibrée.\\
 
-Enfin, nous avons choisi de désactiver le prétraitement manuel (mise en minuscules, suppression des accents, etc.), car l'implémentation de Scikit-learn intègre déjà certaines étapes de normalisation, notamment la conversion en minuscules, et les résultats expérimentaux ont montré que ce prétraitement supplémentaire n'apportait pas d'amélioration significative des performances.\\
+Enfin, nous avons choisi de désactiver le prétraitement manuel (mise en minuscules, suppression des accents, etc.), car l'implémentation de Scikit-learn intègre déjà certaines étapes de normalisation, notamment la conversion en minuscules, et les résultats expérimentaux ont montré que ce prétraitement supplémentaire n'apportait pas d'amélioration significative des performances. Finalement nous avions une pipeline 1 avec les convertions en minuscules, suppression des accents, stopwords, etc qui a été abandonnée. À la place nous utilisons la TF-IDF directement.\\
 
 
 
@@ -246,52 +246,109 @@ Contrairement aux analyses de films nous avons utilisé camembert-base comme mod
 
 Pour les deux transformers nous avons essayé plusieurs learning rate, nombre d'epochs et aussi ajouté du dropout. Nous avons aussi essayé d'undersampler le dataset de discours de présidents.\\
 
-En conclusion le transformer a donné de très bons résultats sur le detaset de films mais les résultats sur les discours de présidents sont décevants. Nous n'avons pas réussi à gérer le déséquilibre des classes et le modèle a tendance à prédire la classe majoritaire (Chirac) pour la grande majorité des phrases. Une amélioration possible serait de faire de la data augmentation pour le jeu de données des discours de présidents.\\
 
-\subsection{Résultats}
+\subsection{Résultats et analyse}
 
-\begin{table}[h]
-\centering
-\begin{tabular}{lcccc}
-\toprule
-Modèle & Accuracy & F1-score & Précision & Rappel \\
-\midrule
-SVM & 0.89 & 0.88 & 0.87 & 0.89 \\
-Logistic Regression & ... & ... & ... & ... \\
-Naive Bayes & ... & ... & ... & ... \\
-Transformers  & ... & ... & ... & ... \\
-\bottomrule
-\end{tabular}
-\caption{Résultats sur les critiques de films}
-\end{table}
+\subsubsection{Résultats sur les 3 classificateurs (SVM linéaire, MultinomialNB et LogisticRegression)}
 
-\subsection{Analyse}
+Pour les classificateurs SVM linéaire, MultinomialNB et LogisticRegression, on observe des temps de calcul extrêmement faibles (de l'ordre de la seconde). Cela nous a permis de tester un grand nombre de combinaisons de paramètres.
 
-\subsection{Résultats}
+\paragraph{Commentaires de films}
 
 \begin{table}[h]
 \centering
-\begin{tabular}{lcccc}
+\begin{tabular}{lccc}
 \toprule
-Modèle & Accuracy & F1-score & Précision & Rappel \\
+tf-idf + & SVM linéaire & MultinomialNB & LogisticRegression \\
 \midrule
-SVM & 0.89 & 0.88 & 0.87 & 0.89 \\
-Logistic Regression & ... & ... & ... & ... \\
-Naive Bayes & ... & ... & ... & ... \\
-Transformers  & ... & ... & ... & ... \\
+Accuracy   & 88.750\% ($\pm$ 1.107\%) & 84.400\% ($\pm$ 1.338\%) & 86.300\% ($\pm$ 1.259\%) \\
+F1-score   & 88.673\% ($\pm$ 1.150\%) & 84.128\% ($\pm$ 1.543\%) & 86.307\% ($\pm$ 1.342\%) \\
+Précision  & 89.156\% ($\pm$ 0.816\%) & 85.571\% ($\pm$ 2.544\%) & 86.151\% ($\pm$ 2.487\%) \\
+Rappel     & 88.214\% ($\pm$ 1.933\%) & 82.938\% ($\pm$ 3.987\%) & 86.510\% ($\pm$ 1.242\%) \\
 \bottomrule
 \end{tabular}
-\caption{Résultats sur les discours de présidents}
+\caption{Résultats sur les commentaires de films}
 \end{table}
 
-\subsection{Analyse}
-Le modèle SVM linéaire obtient les meilleures performances sur les deux jeux de données. Cela s’explique par sa capacité à gérer des données de grande dimension, comme les représentations TF-IDF.
+On observe de meilleurs résultats avec le SVM linéaire et la régression logistique. Nous avons donc soumis ces deux modèles au leaderboard.
+% \begin{table}[h]
+% \centering
+% \begin{tabular}{lccc}
+% \toprule
+% tf-idf + & SVM linéaire & MultinomialNB & LogisticRegression \\
+% \midrule
+% F1-score       & 94.815\%  
+% ROC AUC        & 89.704\% 
+% Avg Precision  & 98.018\% 
+% \bottomrule
+% \end{tabular}
+% \caption{Résultats sur Chirac/Mitterrand}
+% \end{table}
 
-Le Naive Bayes, bien que rapide, présente des performances inférieures, notamment en raison de son hypothèse d’indépendance entre les mots.
+\paragraph{Chirac / Mitterrand}
 
-On remarque également que les performances sont plus faibles sur le jeu de données des discours politiques. Cela s’explique par le déséquilibre des classes et la complexité du langage utilisé.
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+tf-idf + & SVM linéaire & MultinomialNB & LogisticRegression \\
+\midrule
+F1-score       & 94.815\% ($\pm$ 0.239\%) & 92.987\% ($\pm$ 0.242\%) & 93.943\% ($\pm$ 0.260\%) \\
+ROC AUC        & 89.704\% ($\pm$ 0.545\%) & 74.189\% ($\pm$ 0.988\%) & 87.800\% ($\pm$ 0.778\%) \\
+Avg Precision  & 98.018\% ($\pm$ 0.210\%) & 94.606\% ($\pm$ 0.437\%) & 97.634\% ($\pm$ 0.265\%) \\
+\bottomrule
+\end{tabular}
+\caption{Résultats sur Chirac/Mitterrand}
+\end{table}
 
-Avec le transformers, 
+Les résultats du tableau Chirac/Mitterrand sont biaisés par le déséquilibre du dataset (notamment l'Average Precision très élevée par rapport au leaderboard).
+
+On observe néanmoins que les meilleurs résultats sont obtenus avec le SVM linéaire et la régression logistique. Cependant, le SVM linéaire ne permet de prédire que les classes, et non leurs probabilités, contrairement à la régression logistique. Cela permet d'améliorer les performances via un post-traitement uniquement avec la régression logistique.
+
+Le post-traitement gaussien ne fonctionne pas bien dans nos tests, en raison du déséquilibre du dataset qui biaise fortement les résultats.
+
+Trois soumissions ont été effectuées :
+\begin{enumerate}
+    \item SVM linéaire
+    \item LogisticRegression
+    \item LogisticRegression + post-traitement
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+tf-idf + & SVM linéaire & MultinomialNB & LogisticRegression \\
+\midrule
+F1-score       & 62.091\% & 58.549\% & 82.066\% \\
+ROC AUC        & 77.615\% & 88.028\% & 97.618\% \\
+Avg Precision  & 44.018\% & 63.733\% & 89.431\% \\
+\bottomrule
+\end{tabular}
+\caption{Résultats sur Chirac/Mitterrand}
+\end{table}
+
+Pour le transformer, nous avons fait une soumission avec le roberta-base pour les films et deux soumission avec camembert-base pour les discours de présidents une avec le post-traitement et une sans.\\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\\ & Films & Présidents & Présidents + Post-traitement \\
+\midrule
+F1-score       & 94.381\% & 58.549\% & 82.066\% \\
+accuracy       & 94.452\% & &  \\
+precision      & 95.601\% & & \\
+recall         & 93.192\% & & \\
+ROC AUC        &          & 88.028\% & 97.618\% \\
+Avg Precision  &          & 63.733\% & 89.431\% \\
+\bottomrule
+\end{tabular}
+\caption{Résultats sur Chirac/Mitterrand}
+\end{table}
+
+En conclusion le transformer a donné de très bons résultats sur le detaset de films mais les résultats sur les discours de présidents sont décevants. Nous n'avons pas réussi à gérer le déséquilibre des classes et le modèle a tendance à prédire la classe majoritaire (Chirac) pour la grande majorité des phrases. Nous nous sommes aussi heurtés à des problèmes de surapprentissage. Une amélioration possible serait de faire de la data augmentation pour le jeu de données des discours de présidents.\\
+
 
 
 \section{Conclusion}
