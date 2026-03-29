@@ -31,12 +31,12 @@ Nous avons divisé notre travail en plusieurs parties. Dans un premier temps, no
 
 \subsubsection{Description du jeu de données}
 
-Ce jeu de données contient des critiques de films. C'est un jeu de données équilibré, nous avons 2000 critiques de films au total dont 1000 critiques positives et 1000 critiques négatives. Chaque critique de film est constituée de plusieurs phrases. Nous avons également les labels associés à chaque critique de film : 1 pour les critiques positives et 0 pour les critiques négatives.
+Ce jeu de données contient des critiques de films. Il est équilibré, nous avons 2000 critiques de films au total dont 1000 critiques positives et 1000 critiques négatives. Chaque critique de film est constituée de plusieurs phrases. Nous avons également les labels associés à chaque critique de film : 1 pour les critiques positives et 0 pour les critiques négatives.
 
 \subsubsection{Analyse du jeu de données}
 
-Dans un premier temps, nous avons calculer la taille du vocabulaire du jeu de données. Nous avons 39659 mots différents avant de faire un pré traitement des données.\\
-Après calculer la taille du vocabulaire, il a fallu regarder la fréquence des mots dans le dataset. \\
+Dans un premier temps, nous avons calculé la taille du vocabulaire du jeu de données. Il y a 39659 mots différents avant de faire un pré traitement des données.\\
+Après avoir calculé la taille du vocabulaire, il a fallu regarder la fréquence des mots dans le dataset. \\
 Voici un exemple de la fréquence des mots dans le dataset : 
 
         \begin{table}[h]
@@ -52,10 +52,10 @@ Voici un exemple de la fréquence des mots dans le dataset :
         is & 25195 \\
         \bottomrule
         \end{tabular}
-        \caption{Mots les plus fréquents (0)}
+        \caption{Mots les plus fréquents}
         \end{table}
 
-Comme attendu, avant toute forme de pré traitement, les mots les plus fréquents sont les stops words. Ils n'apportent pas d'information discriminante plus tard dans la partie prétraitement. ils seront supprimés.\\
+Comme attendu, avant toute forme de pré traitement, les mots les plus fréquents sont les stops words. Ils n'apportent pas d'information discriminante plus tard dans la partie prétraitement, ils seront supprimés.\\
 Une meilleure façon de visualiser la fréquence des mots est d'utiliser un word cloud. Ainsi que la distribution de Zipf.
 
 
@@ -74,15 +74,15 @@ Une meilleure façon de visualiser la fréquence des mots est d'utiliser un word
             \label{fig:images-tests}
         \end{figure}
 
-Il est aussi intéressant de regarder les mots les plus discriminants pour les critiques positives et négatives. Les mots les plus discriminants seront fait après le pré traitement des données.\\
-Sur la distribution de Zipf on remarque que quelques mots sont très fréquents et que la grande majorité des mots sont peu fréquents.\\
+Il est aussi intéressant de regarder les mots les plus discriminants pour les critiques positives et négatives. Les mots les plus discriminants seront déterminés après le pré traitement des données.\\
+Sur la distribution de Zipf, on remarque que quelques mots sont très fréquents et que seuls quelques mots sont peu fréquents.\\
 
 
-\subsection{Classification des discours de Présidents}
+\subsection{Classification des discours de présidents}
 \subsubsection{Description du jeu de données}
 
-Ce jeu de données contient des discours de Jaques Chirac et de François Mitterrand. Ce jeu de données est largement plus complexe à traiter que le jeu de données de critiques de films car le jeux est largement plus désiquilibré. Nous avons 57413 phrases au total dont 49890 $(86.90\%)$ de Jaques Chirac et 7523 $(13.10\%)$ de François Mitterrand.\\
-Chaque phrase est constituée de plusieurs mots. Nous avons également les labels associés à chaque phrase : 0 pour les phrases de Jaques Chirac et 1 pour les phrases de François Mitterrand.
+Ce jeu de données contient des discours de Jaques Chirac et de François Mitterrand. Ce jeu il est largement plus complexe à traiter que celui de critiques de films car il est largement plus désiquilibré. Nous avons 57413 phrases au total dont 49890 $(86.90\%)$ de Jaques Chirac et 7523 $(13.10\%)$ de François Mitterrand.\\
+Chaque phrase est constituée de plusieurs mots. Nous avons également les labels associés à chaque phrase : 0 pour celles de Jaques Chirac et 1 pour celles de François Mitterrand.
 
 \subsubsection{Analyse du jeu de données}
 Comme dans la section précédente il a fallu calculer le nombre de mots différents présents dans le dataset. Il y 27055 mots différents avant de faire un pré traitement des données.\\
@@ -99,14 +99,12 @@ Voici un exemple de la fréquence des mots dans le dataset :
         la & 43944 \\
         et & 37281 \\
         le & 26220 \\
-        lse & 26071 \\
+        les & 26071 \\
         \bottomrule
         \end{tabular}
         \caption{Mots les plus fréquents (1)}
         \end{table}
 
-
-encore une fois, les mots les plus fréquents sont les stops words.\\
 
         \begin{figure}[h!]
             \centering
@@ -129,7 +127,8 @@ Comme pour les critiques de films les mots les plus fréquents sont les stops wo
 
 \subsection{Prétraitement des données}
 \subsubsection{Description}
-Le prétraitement des données est une des étapes les plus importantes dans ce projet. Nous avons plusieurs techniques différentes pour faire du prétraitement pour finalement arriver à une pipeline de prétraitement qui nous semble la plus adaptée pour nos jeux de données.\\
+
+Le prétraitement des données est une des étapes les plus importantes dans ce projet. Nous avons plusieurs techniques différentes pour faire du prétraitement afin d'arriver à une pipeline de prétraitement qui nous semble la plus adaptée pour nos jeux de données.\\
 
 \subsubsection{Objectifs du prétraitement}
 
@@ -138,12 +137,11 @@ Nous avons aussi essayé de garder uniquement les premières lignes de chaque cr
 
 \subsubsection{Nettoyage du texte}
 
-La premières chose qui à été fait pour le nettoyage du texte a été de supprimer les majuscules. Ensuite, nous avons supprimé les caractères spéciaux et les chiffres. Nous avons aussi supprimé les stop words car ils n'apportent pas d'informations pertinentes pour la classification.\\
-Pour le jeu de données des avis de films nous avons supprimé les mots les plus fréquents car ils sont très peu discriminants. Il à fallu aussi ajouté une liste de mots plus rares mais non discriminants.
+Pour le jeu de données des avis de films nous avons supprimé les mots les plus fréquents car ils sont très peu discriminants. Il a fallu aussi ajouter aux stop words une liste de mots plus rares mais non discriminants.
 
 Les plus fréquents n'apportent pas d'informations discriminantes c'est à dire qu'ils sont présents dans les critiques de films positives et négatives.
 
-Pour le jeu de données des discours de présidents nous avons supprimé les stop words francais, nous avons aussi retiré les mots "français", "pays" et "qu" car ils sont très peu discriminants. Ce data set est beaucoup plus complexe à traiter que le précédent. vu qu'il est déséquilibré les Chirac est sur représenté sur les graphes\\
+Pour le jeu de données des discours de présidents nous avons supprimé les stop words francais, nous avons aussi retiré les mots "français", "pays" et "qu" car ils sont très peu discriminants. Ce data set est beaucoup plus complexe à traiter que le précédent. Comme il est déséquilibré les discoursd de Chirac sont sur représentées sur les graphes.\\
 
 Il est intéressant de comparer les graphes de la répartition des mots positifs et négatifs avant et après le prétraitement des données.\\
 
@@ -158,15 +156,15 @@ Il est intéressant de comparer les graphes de la répartition des mots positifs
             \begin{minipage}{0.5\textwidth}
                 \centering
                 \includegraphics[width=\linewidth]{image/analyse_data/top_words_by_sentiment_proced.png}
-                \caption*{\small fréquence des mots et caractère discriminant des mots dans les discours de présidents avant prétraitement}
+                \caption*{\small fréquence des mots et caractère discriminant des mots dans les critiques de films après prétraitement}
             \end{minipage}\hfill
             \label{fig:images-tests}
         \end{figure}
 
 
-Comme on peut les voir sur les graphes après le prétraitement des données, les mots les plus fréquents on évidement changé mais sur tout nous pouvons remarquer que les mots sont bien plus discriminants qu'avant le prétraitement des données. Nous avons beaucoup plus de mots qui sont présents dans les critiques de films positives que dans les critiques de films négatives et inversement.\\
+Comme on peut les voir sur les graphes après le prétraitement des données, les mots les plus fréquents ont évidement changé mais surtout nous pouvons remarquer que les mots sont bien plus discriminants qu'avant le prétraitement des données. Nous avons beaucoup plus de mots qui sont présents dans les critiques de films positives que dans les critiques de films négatives et inversement.\\
 
-Il est aussi intéressant de regarder la courbe de Zipf après le prétraitement des données. Nous pouvons voir que la courbe de Zipf est beaucoup plus lisse après le prétraitement des données.\\
+Nous pouvons voir que la courbe de Zipf est beaucoup plus lisse après le prétraitement des données.\\
 
         \begin{figure}[h!]
             \centering
@@ -183,13 +181,13 @@ Il est aussi intéressant de regarder la courbe de Zipf après le prétraitement
             \label{fig:images-tests}
         \end{figure}
 
-Sur les Figures 2 et 4 les courbes de zipf montrent que les corpus sont dominés par un petit nombre de mots très fréquents, tandis que la grande majorité des mots sont rares. Cependant, après le prétraitement des données, les courbes de Zipf deviennent plus lisses, ce qui indique que les mots les plus fréquents ont été supprimés et que les mots restants sont plus équilibrés en termes de fréquence.\\
+Sur les Figures 2 et 4 les courbes de zipf montrent que les corpus sont dominés par un petit nombre de mots très fréquents, tandis que la grande majorité des mots sont rares. Cependant, après le prétraitement des données, les courbes de Zipf deviennent moins linéaires, ce qui indique que les mots les plus fréquents ont été supprimés et que les mots restants sont plus équilibrés en termes de fréquence.\\
 
 Ce prétraitement des données est le premier que nous avons implémenté. Il ne donnait pas de résultats satisfaisants donc nous nous sommes dirigés vers la TF-IDF pour faire du prétraitement des données.\\
 
 La TF-IDF (Term Frequency – Inverse Document Frequency) consiste à attribuer un poids à chaque mot en fonction de son importance dans un document et dans l’ensemble du corpus. La composante TF (Term Frequency) mesure la fréquence d’un mot dans un document, tandis que la composante IDF (Inverse Document Frequency) pénalise les mots apparaissant fréquemment dans de nombreux documents. Ainsi, un mot fréquent dans un document mais rare dans le corpus aura un poids élevé, ce qui le rend plus discriminant pour la classification.\\
 
-Nous avons utilisé la TF-IDF de la librairie Scikit-learn, beaucoup de configurations on été testées et nous nous sommes arrêtés sur celle qui donnait les meilleurs résultats. 
+Nous avons utilisé la TF-IDF de la librairie Scikit-learn, beaucoup de configurations ont été testées et nous nous sommes arrêtés sur celle qui donnait les meilleurs résultats. 
 
 Pour le jeu de données des films, nous avons utilisé les paramètres \texttt{max\_df = 1}, \texttt{min\_df = 3} et \texttt{sublinear\_tf = True}. Le paramètre \texttt{min\_df = 3} permet de supprimer les mots apparaissant dans moins de trois documents, ce qui réduit le bruit lié aux mots très rares ou aux erreurs typographiques. Le paramètre \texttt{max\_df = 1} signifie que nous ne filtrons pas explicitement les mots très fréquents, car la pondération TF-IDF se charge déjà de diminuer leur importance.\\
 
@@ -197,13 +195,6 @@ L'option \texttt{sublinear\_tf = True} applique une transformation logarithmique
 
 Enfin, nous avons choisi de désactiver le prétraitement manuel (mise en minuscules, suppression des accents, etc.), car l'implémentation de Scikit-learn intègre déjà certaines étapes de normalisation, notamment la conversion en minuscules, et les résultats expérimentaux ont montré que ce prétraitement supplémentaire n'apportait pas d'amélioration significative des performances.\\
 
-Nous pouvons visualiser les mots les plus discriminants pour les critiques de films positives et négatives après le prétraitement des données.\\
-
-
-
-
-
-Pour les discours de présidents et le transformer nous avons appliqué des peu de prétraitement des données, mais nous avons mis des poids plus élevés pour les dicours de François Mitterrand pour compenser le déséquilibre des classes.
 
 
 \section{Classification}
@@ -218,6 +209,7 @@ Dans cette section, nous présentons les différentes méthodes de classificatio
 Nous utilisons une représentation TF-IDF avec des n-grammes (1,2). Les modèles sont évalués à l’aide d’une validation croisée (K-Fold) afin d’obtenir des résultats robustes.
 
 Pour le jeu de données des films, nous utilisons une validation croisée à 5 plis, tandis que pour les discours politiques nous utilisons une validation croisée à 10 plis.
+
 
 Les métriques utilisées sont :
 \begin{itemize}
@@ -238,6 +230,17 @@ Nous avons expérimenté plusieurs modèles de classification :
 \item Naive Bayes multinomial
 \item Transformers (BERT)
 \end{itemize}
+
+
+\subsubsection{Transformers}
+
+Le transformer est la méthode la plus avancée que nous avons testée mais aussi celle que nous avons le moins apréciée en raison de sa complexité et de son coût en calcul. Pour le dataset de films le modèle qui a été choisi est le roberta-base. Ce modèle est fait pour des taches de classification de texte. Notre tache a été de fine-tuner le modèle, pour cela nous avons utilisé un tokenizer avec une taille de 512 tokens, un learning rate de $1.5e-5$ un batch size de 32. Les transformers sont adaptées pour les tâches avec de grandes données équilibrées et qui comportent des données corrélées. Cela explique les bons résultats que nous avons obtenus sur le dataset de films.\\
+
+Contrairement aux analyses de films nous avons utilisé camembert-base comme modèle qui est adapté pour le français. Nous avons utilisé un tokenizer avec une longueur maximale de 128 tokens car les discours sont juste des phrases donc plus courtes que les films. Nous avons choisi adamW comme optimiseur avec un learning rate de $2e-5$. Le point le plus important est la Cross Entropy avec poids dynamique pour compenser le déséquilibre des classes et donc possiblement compenser le biais. De plus la classification de présidents est plus complexe que celle des films car la différence est dans le style de parole avec souvent un vocabulaire commun.\\
+
+Pour les deux transformers nous avons essayé plusieurs learning rate, nombre d'epochs et aussi ajouté du dropout. Nous avons aussi essayé d'undersampler le dataset de discours de présidents.\\
+
+En conclusion le transformer a donné de très bons résultats sur le detaset de films mais les résultats sur les discours de présidents sont décevants. Nous n'avons pas réussi à gérer le déséquilibre des classes et le modèle a tendance à prédire la classe majoritaire (Chirac) pour la grande majorité des phrases. Une amélioration possible serait de faire de la data augmentation pour le jeu de données des discours de présidents.\\
 
 \subsection{Résultats}
 

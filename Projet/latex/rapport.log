@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2026.2.20)  29 MAR 2026 13:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2026.2.20)  29 MAR 2026 18:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -428,12 +428,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-<image/analyse_data/wordcloud.png, id=105, 570.933pt x 292.6935pt>
+<image/analyse_data/wordcloud.png, id=110, 570.933pt x 292.6935pt>
 File: image/analyse_data/wordcloud.png Graphic file (type png)
 <use image/analyse_data/wordcloud.png>
 Package pdftex.def Info: image/analyse_data/wordcloud.png  used on input line 66.
 (pdftex.def)             Requested size: 170.71393pt x 87.51842pt.
-<image/analyse_data/plot_zipf_film_non_pre.png, id=107, 502.2765pt x 343.2825pt>
+<image/analyse_data/plot_zipf_film_non_pre.png, id=112, 502.2765pt x 343.2825pt>
 File: image/analyse_data/plot_zipf_film_non_pre.png Graphic file (type png)
 <use image/analyse_data/plot_zipf_film_non_pre.png>
 Package pdftex.def Info: image/analyse_data/plot_zipf_film_non_pre.png  used on input line 71.
@@ -448,32 +448,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--79
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 109--110
-
- []
-
-<image/analyse_data/wordcloud_pres_non_pret.png, id=117, 372.1905pt x 193.6836pt>
+<image/analyse_data/wordcloud_pres_non_pret.png, id=122, 372.1905pt x 193.6836pt>
 File: image/analyse_data/wordcloud_pres_non_pret.png Graphic file (type png)
 <use image/analyse_data/wordcloud_pres_non_pret.png>
-Package pdftex.def Info: image/analyse_data/wordcloud_pres_non_pret.png  used on input line 115.
+Package pdftex.def Info: image/analyse_data/wordcloud_pres_non_pret.png  used on input line 113.
 (pdftex.def)             Requested size: 170.71393pt x 88.83545pt.
-<image/analyse_data/plot_zipf_pres_non_pre.png, id=118, 502.2765pt x 343.2825pt>
+<image/analyse_data/plot_zipf_pres_non_pre.png, id=123, 502.2765pt x 343.2825pt>
 File: image/analyse_data/plot_zipf_pres_non_pre.png Graphic file (type png)
 <use image/analyse_data/plot_zipf_pres_non_pre.png>
-Package pdftex.def Info: image/analyse_data/plot_zipf_pres_non_pre.png  used on input line 120.
+Package pdftex.def Info: image/analyse_data/plot_zipf_pres_non_pre.png  used on input line 118.
 (pdftex.def)             Requested size: 170.71393pt x 116.67259pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
  []
 
 [3 <./image/analyse_data/wordcloud.png> <./image/analyse_data/plot_zipf_film_non_pre.png> <./image/analyse_data/wordcloud_pres_non_pret.png> <./image/analyse_data/plot_zipf_pres_non_pre.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 136--138
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
@@ -482,43 +483,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
+<image/analyse_data/top_words_by_sentiment_base.png, id=138, 1148.6112pt x 569.4876pt>
+File: image/analyse_data/top_words_by_sentiment_base.png Graphic file (type png)
+<use image/analyse_data/top_words_by_sentiment_base.png>
+Package pdftex.def Info: image/analyse_data/top_words_by_sentiment_base.png  used on input line 153.
+(pdftex.def)             Requested size: 213.39568pt x 105.79672pt.
+<image/analyse_data/top_words_by_sentiment_proced.png, id=139, 1148.6112pt x 569.4876pt>
+File: image/analyse_data/top_words_by_sentiment_proced.png Graphic file (type png)
+<use image/analyse_data/top_words_by_sentiment_proced.png>
+Package pdftex.def Info: image/analyse_data/top_words_by_sentiment_proced.png  used on input line 158.
+(pdftex.def)             Requested size: 213.39568pt x 105.79672pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
-<image/analyse_data/top_words_by_sentiment_base.png, id=133, 1148.6112pt x 569.4876pt>
-File: image/analyse_data/top_words_by_sentiment_base.png Graphic file (type png)
-<use image/analyse_data/top_words_by_sentiment_base.png>
-Package pdftex.def Info: image/analyse_data/top_words_by_sentiment_base.png  used on input line 155.
-(pdftex.def)             Requested size: 213.39568pt x 105.79672pt.
-<image/analyse_data/top_words_by_sentiment_proced.png, id=134, 1148.6112pt x 569.4876pt>
-File: image/analyse_data/top_words_by_sentiment_proced.png Graphic file (type png)
-<use image/analyse_data/top_words_by_sentiment_proced.png>
-Package pdftex.def Info: image/analyse_data/top_words_by_sentiment_proced.png  used on input line 160.
-(pdftex.def)             Requested size: 213.39568pt x 105.79672pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
  []
 
+<image/analyse_data/plot_zipf_movie_pre.png, id=140, 502.2765pt x 343.2825pt>
+File: image/analyse_data/plot_zipf_movie_pre.png Graphic file (type png)
+<use image/analyse_data/plot_zipf_movie_pre.png>
+Package pdftex.def Info: image/analyse_data/plot_zipf_movie_pre.png  used on input line 173.
+(pdftex.def)             Requested size: 170.71393pt x 116.67259pt.
+<image/analyse_data/plot_zipf_pres_pre.png, id=141, 502.2765pt x 343.2825pt>
+File: image/analyse_data/plot_zipf_pres_pre.png Graphic file (type png)
+<use image/analyse_data/plot_zipf_pres_pre.png>
+Package pdftex.def Info: image/analyse_data/plot_zipf_pres_pre.png  used on input line 178.
+(pdftex.def)             Requested size: 170.71393pt x 116.67259pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
 [4 <./image/analyse_data/top_words_by_sentiment_base.png> <./image/analyse_data/top_words_by_sentiment_proced.png>]
-<image/analyse_data/plot_zipf_movie_pre.png, id=143, 502.2765pt x 343.2825pt>
-File: image/analyse_data/plot_zipf_movie_pre.png Graphic file (type png)
-<use image/analyse_data/plot_zipf_movie_pre.png>
-Package pdftex.def Info: image/analyse_data/plot_zipf_movie_pre.png  used on input line 175.
-(pdftex.def)             Requested size: 170.71393pt x 116.67259pt.
-<image/analyse_data/plot_zipf_pres_pre.png, id=144, 502.2765pt x 343.2825pt>
-File: image/analyse_data/plot_zipf_pres_pre.png Graphic file (type png)
-<use image/analyse_data/plot_zipf_pres_pre.png>
-Package pdftex.def Info: image/analyse_data/plot_zipf_pres_pre.png  used on input line 180.
-(pdftex.def)             Requested size: 170.71393pt x 116.67259pt.
-
 Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
@@ -528,15 +531,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 188--189
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
-
- []
-
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 194.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 192.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 )
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 194--195
 
  []
@@ -546,36 +549,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
+[5 <./image/analyse_data/plot_zipf_movie_pre.png> <./image/analyse_data/plot_zipf_pres_pre.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 
  []
 
-[5 <./image/analyse_data/plot_zipf_movie_pre.png> <./image/analyse_data/plot_zipf_pres_pre.png>] [6] [7] (./rapport.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6] [7] (./rapport.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `rapport.out' has not changed.
-(rerunfilecheck)             Checksum: ACF3ADA7B8779F431735364971DDB1E1;2951.
+(rerunfilecheck)             Checksum: 2CA4BAA64A1BFA59F54772A33897DB17;3079.
  ) 
 Here is how much of TeX's memory you used:
- 12503 strings out of 476041
- 195651 string characters out of 5793174
- 1861388 words of memory out of 6000000
- 32737 multiletter control sequences out of 15000+600000
+ 12505 strings out of 476041
+ 195691 string characters out of 5793174
+ 1862388 words of memory out of 6000000
+ 32738 multiletter control sequences out of 15000+600000
  527306 words of font info for 70 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 75i,8n,76p,756b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on rapport.pdf (7 pages, 792098 bytes).
+ 75i,8n,76p,832b,456s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on rapport.pdf (7 pages, 803005 bytes).
 PDF statistics:
- 225 PDF objects out of 1000 (max. 8388607)
- 176 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 185 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 184 compressed objects within 2 object streams
+ 39 named destinations out of 1000 (max. 500000)
+ 193 words of extra memory for PDF output out of 10000 (max. 10000000)
 
