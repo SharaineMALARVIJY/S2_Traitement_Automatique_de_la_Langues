@@ -18,7 +18,7 @@ alltxts, y = load_pres(fname)
 alltxts_test = load_pres_test("../datasets_test_projet/corpus.tache1.test.utf8")
 
 alltxts = preprocess(texts=alltxts)
-vectorizer = TfidfVectorizer(ngram_range=(1, 2), strip_accents=None, lowercase=False, preprocessor=None)
+vectorizer = TfidfVectorizer(max_df= 0.95, ngram_range=(1, 2), strip_accents=None, lowercase=False, preprocessor=None)
 X = vectorizer.fit_transform(alltxts)
 
 alltxts_test = preprocess(texts=alltxts_test)

@@ -20,7 +20,7 @@ RANDOM_STATE = 42
 N_SPLIT = 5
 
 alltxts = preprocess(texts=alltxts)
-vectorizer = TfidfVectorizer(min_df=0.005, ngram_range=(1, 2), sublinear_tf=True, strip_accents=None, lowercase=False, preprocessor=None)
+vectorizer = TfidfVectorizer(max_df= 0.95, min_df=0.005, ngram_range=(1, 2), sublinear_tf=True, strip_accents=None, lowercase=False, preprocessor=None)
 X = vectorizer.fit_transform(alltxts)
 
 alltxts_test = preprocess(texts=alltxts_test)
