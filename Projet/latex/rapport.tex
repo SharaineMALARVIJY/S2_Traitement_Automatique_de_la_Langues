@@ -58,6 +58,8 @@ Voici un exemple de la fréquence des mots dans le dataset :
 Comme attendu, avant toute forme de pré traitement, les mots les plus fréquents sont les stops words. Ils n'apportent pas d'information discriminante plus tard dans la partie prétraitement, ils seront supprimés.\\
 Une meilleure façon de visualiser la fréquence des mots est d'utiliser un word cloud. Ainsi que la distribution de Zipf.
 
+\newpage
+
 
         \begin{figure}[h!]
             \centering
@@ -124,6 +126,8 @@ Voici un exemple de la fréquence des mots dans le dataset :
 
 Comme pour les critiques de films les mots les plus fréquents sont les stops words francais.\\
 
+\newpage
+
 
 \subsection{Prétraitement des données}
 \subsubsection{Description}
@@ -160,6 +164,8 @@ Il est intéressant de comparer les graphes de la répartition des mots positifs
             \end{minipage}\hfill
             \label{fig:images-tests}
         \end{figure}
+
+\newpage
 
 
 Comme on peut les voir sur les graphes après le prétraitement des données, les mots les plus fréquents ont évidement changé mais surtout nous pouvons remarquer que les mots sont bien plus discriminants qu'avant le prétraitement des données. Nous avons beaucoup plus de mots qui sont présents dans les critiques de films positives que dans les critiques de films négatives et inversement.\\
@@ -253,7 +259,7 @@ Modèle & Accuracy & F1-score & Précision & Rappel \\
 SVM & 0.89 & 0.88 & 0.87 & 0.89 \\
 Logistic Regression & ... & ... & ... & ... \\
 Naive Bayes & ... & ... & ... & ... \\
-Transformers (BERT) & ... & ... & ... & ... \\
+Transformers  & ... & ... & ... & ... \\
 \bottomrule
 \end{tabular}
 \caption{Résultats sur les critiques de films}
@@ -261,16 +267,34 @@ Transformers (BERT) & ... & ... & ... & ... \\
 
 \subsection{Analyse}
 
+\subsection{Résultats}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Modèle & Accuracy & F1-score & Précision & Rappel \\
+\midrule
+SVM & 0.89 & 0.88 & 0.87 & 0.89 \\
+Logistic Regression & ... & ... & ... & ... \\
+Naive Bayes & ... & ... & ... & ... \\
+Transformers  & ... & ... & ... & ... \\
+\bottomrule
+\end{tabular}
+\caption{Résultats sur les discours de présidents}
+\end{table}
+
+\subsection{Analyse}
 Le modèle SVM linéaire obtient les meilleures performances sur les deux jeux de données. Cela s’explique par sa capacité à gérer des données de grande dimension, comme les représentations TF-IDF.
 
 Le Naive Bayes, bien que rapide, présente des performances inférieures, notamment en raison de son hypothèse d’indépendance entre les mots.
 
 On remarque également que les performances sont plus faibles sur le jeu de données des discours politiques. Cela s’explique par le déséquilibre des classes et la complexité du langage utilisé.
 
-Avec le transformers (BERT), 
+Avec le transformers, 
 
 
 \section{Conclusion}
-En conclusion, ce projet nous a permis d’explorer différentes techniques de prétraitement et de classification pour des tâches de NLP. Nous avons vu l’importance du prétraitement des données, notamment l’utilisation de la TF-IDF, pour améliorer les performances des modèles.
+En conclusion, ce projet nous a permis d’explorer différentes techniques de prétraitement et de classification pour des tâches de NLP. Nous avons vu l’importance du prétraitement des données, notamment l’utilisation de la TF-IDF, pour améliorer les performances des modèles
 
 \end{document}
