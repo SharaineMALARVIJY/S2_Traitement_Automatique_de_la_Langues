@@ -237,6 +237,9 @@ Nous avons expérimenté plusieurs modèles de classification :
 \item Transformers (BERT)
 \end{itemize}
 
+\subsubsection{Classification simple}
+Lors des premières experimentations, on a testé dans la partie bonus du TP3a un Word2Vec avec une Regression Linéaire pour faire la classification sur Chirac/Mitterrand.
+En remplaçant, le Word2Vec par une TF-IDF, on a ensuite continué de tester des modèles de classification différents qui sont la Regression Linéaire, la SVM linéaire, la Random Forest, la SVM avec noyau rbf et la SVM avec noyau poly. Après avoir testé ces différents modèles, on a trouvé que les modèles plus complexes type SVM avec noyau rbf ou random forest fessaient du sur-apprentissage très facilement et que les meilleurs résultats étaient obtenus avec des modèles plus simples (SVM linéaire, Regression Linéaire, Naive Bayes).
 
 \subsubsection{Transformers}
 
@@ -270,20 +273,7 @@ Rappel     & 88.214\% ($\pm$ 1.933\%) & 82.938\% ($\pm$ 3.987\%) & 86.510\% ($\p
 \caption{Résultats sur les commentaires de films}
 \end{table}
 
-On observe de meilleurs résultats avec le SVM linéaire et la régression logistique. Nous avons donc soumis ces deux modèles au leaderboard.
-% \begin{table}[h]
-% \centering
-% \begin{tabular}{lccc}
-% \toprule
-% tf-idf + & SVM linéaire & MultinomialNB & LogisticRegression \\
-% \midrule
-% F1-score       & 94.815\%  
-% ROC AUC        & 89.704\% 
-% Avg Precision  & 98.018\% 
-% \bottomrule
-% \end{tabular}
-% \caption{Résultats sur Chirac/Mitterrand}
-% \end{table}
+On observe de meilleurs résultats avec le SVM linéaire (88.75\%) par rapport à la régression logistique (86.30\%) et au Naive Bayes (84.40\%). Le SVM linéaire est particulièrement adapté à ce type de tâche car il cherche à maximiser la marge entre les classes dans un espace de grande dimension, ce qui est cohérent avec une représentation TF-IDF qui produit des vecteurs creux mais de très haute dimension. La régression logistique donne de bons résultats également, mais elle est plus sensible aux features corrélées, ce qui peut expliquer l'écart. Le naive bayes supose que les features sont indépendantes, ce qui n'est pas le cas.
 
 \paragraph{Chirac / Mitterrand}
 
@@ -328,30 +318,33 @@ Avg Precision  & 44.018\% & 63.733\% & 89.431\% \\
 \caption{Résultats sur Chirac/Mitterrand}
 \end{table}
 
-Pour le transformer, nous avons fait une soumission avec le roberta-base pour les films et deux soumission avec camembert-base pour les discours de présidents une avec le post-traitement et une sans.\\
+\subsubsection{Transformer}
+
+Pour le transformer, nous avons fait une soumission avec le roberta-base pour les films.\\
 
 \begin{table}[h]
 \centering
-\begin{tabular}{lccc}
+\begin{tabular}{lcccc}
 \toprule
-\\ & Films & Présidents & Présidents + Post-traitement \\
+ & F1-score & Accuracy & Precision & Recall \\
 \midrule
-F1-score       & 94.381\% & 58.549\% & 82.066\% \\
-accuracy       & 94.452\% & &  \\
-precision      & 95.601\% & & \\
-recall         & 93.192\% & & \\
-ROC AUC        &          & 88.028\% & 97.618\% \\
-Avg Precision  &          & 63.733\% & 89.431\% \\
+Films & 94.381\% & 94.452\% & 95.601\% & 93.192\% \\
 \bottomrule
 \end{tabular}
-\caption{Résultats sur Chirac/Mitterrand}
+\caption{Résultats sur Films avec transformer}
 \end{table}
 
-En conclusion le transformer a donné de très bons résultats sur le detaset de films mais les résultats sur les discours de présidents sont décevants. Nous n'avons pas réussi à gérer le déséquilibre des classes et le modèle a tendance à prédire la classe majoritaire (Chirac) pour la grande majorité des phrases. Nous nous sommes aussi heurtés à des problèmes de surapprentissage. Une amélioration possible serait de faire de la data augmentation pour le jeu de données des discours de présidents.\\
-
+Le transformer a donné de très bons résultats sur le detaset de films mais les résultats sur les discours de présidents sont décevants. Nous n'avons pas réussi à gérer le déséquilibre des classes et le modèle a tendance à prédire la classe majoritaire (Chirac) pour la grande majorité des phrases. Nous nous sommes aussi heurtés à des problèmes de surapprentissage. Une amélioration possible serait de faire de la data augmentation pour le jeu de données des discours de présidents.\\
 
 
 \section{Conclusion}
-En conclusion, ce projet nous a permis d’explorer différentes techniques de prétraitement et de classification pour des tâches de NLP. Nous avons vu l’importance du prétraitement des données, notamment l’utilisation de la TF-IDF, pour améliorer les performances des modèles
+
+Ce projet nous a permis d’explorer différentes approches de traitement automatique du langage naturel, en combinant des étapes de prétraitement, de représentation des données et de classification.
+
+Nous avons constaté que la TF-IDF avec des modèles linéaires comme les SVM et la régrssion logistique donne des résultats satisfaisants surtout quand elles sont combinées avec des techniques de post-traitement pour les datasets déséquilibrés. Nous avans aussi vu que les modèles plus complexes comme les transformers peuvent donner de très bons résultats sur des tâches relativement simples et équilibrées, mais peuvent être moins performants sur des tâches plus complexes et déséquilibrées, surtout si le dataset est petit.
+
+L’étude du jeu de données Chirac/Mitterrand a mis en évidence les limites des approches standards face au déséquilibre des classes.
+
+Comme perspectives, il serait intéressant d’explorer des techniques de rééquilibrage des données (oversampling, data augmentation) afin d’améliorer les performances sur des jeux de données déséquilibrés et complexes.
 
 \end{document}
